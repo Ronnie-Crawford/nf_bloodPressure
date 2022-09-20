@@ -21,7 +21,7 @@ process READ_FILE
 
             print("Reading file...")
 
-            bpdf = pd.read_csv(bp__file_in)
+            bpdf = pd.read_csv(bp_file_in)
 
             systolic_pressures_out = bpdf["Systolic"]
             diastolic_pressures_out = bpdf["Diastolic"]
