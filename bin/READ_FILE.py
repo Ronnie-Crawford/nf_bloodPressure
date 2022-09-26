@@ -12,9 +12,11 @@ import pandas as pd
 bpdf = pd.read_csv(sys.argv[1])
 
 #Extract data arrays
-systolic_pressures_out = bpdf["Systolic"]
-diastolic_pressures_out = bpdf["Diastolic"]
-bpms_out = bpdf["BPM"]
+systolic_pressures_out = bpdf["Systolic"].array
+diastolic_pressures_out = bpdf["Diastolic"].array
+bpms_out = bpdf["BPM"].array
+print(bpdf)
+print(systolic_pressures_out)
 
 #Write output to file
 bp_lists = open("bp_read_out.txt", "w")

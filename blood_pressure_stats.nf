@@ -3,15 +3,24 @@
 //User sets file locations for Nextflow to use
 params.input_file = "$projectDir/blood_pressure.csv"
 params.find_lowest_file = "$projectDir/bin/FIND_LOWEST.jar"
-params
+params.output_file = "$projectDir/bp_average_out.txt"
+
+    log
+    """
+        \
+        B L O O D - P R E S S U R E - A N A L Y S E R
+        =============================================
+        File in: ${params.input_file}
+        File out: ${params.output_file}
+        \
+    """
 
 //Main workflow
 workflow
 {
     READ_FILE(params.input_file)
     FIND_LOWEST(READ_FILE.out, params.find_lowest_file)
-    //FIND_AVERAGE(FIND_LOWEST.out)
-    //OUTPUT(FIND_AVERAGE.out)
+    FIND_AVERAGE(FIND_LOWEST.out)
 }
 
 //Process to extract data from csv file and find lowest values in repeats - Python
@@ -59,28 +68,5 @@ process FIND_AVERAGE
     script:
     """
     FIND_AVERAGE.py
-    """
-}
-
-//Process to output results to command line
-process OUTPUT
-{
-    input:
-        path ('bp_average_out.txt')
-
-    sys_average = $ sed '1!d' bp_average_out.txt
-    dias_average = $ sed '2!d' bp_average_out.txt
-    bpm_average = $ sed '3!d' bp_average_out.txt
-
-    log.info
-    """
-        \
-        B L O O D - P R E S S U R E - A N A L Y S E R
-        =============================================
-        File in: ${params.input_file}
-        Average lowest systolic blood pressure: ${sys_average}
-        Average lowest diastolic blood pressure: ${dias_average}
-        Average lowest bpm: ${bpm_average}
-        \
     """
 }

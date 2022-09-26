@@ -23,9 +23,21 @@ public class FIND_LOWEST
         //Import lists from input file
         try
         {
-				systolic_pressures_string = Files.readAllLines(Paths.get("bp_lists.txt")).get(0);
-                diastolic_pressures_string = Files.readAllLines(Paths.get("bp_lists.txt")).get(1);
-                bpms_string = Files.readAllLines(Paths.get("bp_lists.txt")).get(2);
+				systolic_pressures_string = Files.readAllLines(Paths.get("bp_read_out.txt")).get(1);
+                diastolic_pressures_string = Files.readAllLines(Paths.get("bp_read_out.txt")).get(3);
+                bpms_string = Files.readAllLines(Paths.get("bp_read_out.txt")).get(5);
+
+                systolic_pressures_string = systolic_pressures_string.replace(" ", "");
+                diastolic_pressures_string = diastolic_pressures_string.replace(" ", "");
+                bpms_string = bpms_string.replace(" ", "");
+
+                systolic_pressures_string = systolic_pressures_string.replace("[", "");
+                diastolic_pressures_string = diastolic_pressures_string.replace("[", "");
+                bpms_string = bpms_string.replace("[", "");
+
+                systolic_pressures_string = systolic_pressures_string.replace("]", "");
+                diastolic_pressures_string = diastolic_pressures_string.replace("]", "");
+                bpms_string = bpms_string.replace("]", "");
 		}
         catch (FileNotFoundException e)
         {
