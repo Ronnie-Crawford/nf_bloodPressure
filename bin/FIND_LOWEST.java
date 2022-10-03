@@ -103,7 +103,7 @@ public class FIND_LOWEST
         for(int i = 0; i < systolic_pressures_in.length; i++)
         {
             int lowest = 0;
-            if(i % 3 == 0)
+            if((i + 1) % 3 == 1)
             {
                 lowest = systolic_pressures_in[i];
             }
@@ -114,10 +114,10 @@ public class FIND_LOWEST
                     lowest = systolic_pressures_in[i];
                 }
             }
-            System.out.println(lowest);
-            if(i % 3 == 2)
+            //System.out.println(lowest);
+            if((i + 1) % 3 == 0)
             {
-                System.out.println("Assigning");
+                //System.out.println("Assigning");
                 lowest_systolics[(i / 3)] = lowest;
             }
         }
@@ -127,7 +127,7 @@ public class FIND_LOWEST
         for(int i = 0; i < diastolic_pressures_in.length; i++)
         {
             int lowest = 0;
-            if(i % 3 == 0)
+            if((i + 1) % 3 == 1)
             {
                 lowest = diastolic_pressures_in[i];
             }
@@ -139,7 +139,7 @@ public class FIND_LOWEST
                 }
             }
 
-            if(i % 3 == 2)
+            if((i + 1) % 3 == 0)
             {
                 lowest_diastolics[i / 3] = lowest;
             }
@@ -150,7 +150,7 @@ public class FIND_LOWEST
         for(int i = 0; i < bpms_in.length; i++)
         {
             int lowest = 0;
-            if(i % 3 == 0)
+            if((i + 1) % 3 == 1)
             {
                 lowest = bpms_in[i];
             }
@@ -162,7 +162,7 @@ public class FIND_LOWEST
                 }
             }
 
-            if(i % 3 == 2)
+            if((i + 1) % 3 == 0)
             {
                 lowest_bpms[i / 3] = lowest;
             }
